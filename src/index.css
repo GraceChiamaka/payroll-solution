@@ -1,0 +1,69 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Almarena";
+}
+@font-face {
+  font-family: EuclidBold;
+  src: url("./assets/fonts/EuclidBold.ttf");
+}
+
+@font-face {
+  font-family: EuclidLight;
+  src: url("./assets/fonts/EuclidLight.ttf");
+}
+
+@font-face {
+  font-family: EuclidMedium;
+  src: url("./assets/fonts/EuclidMedium.ttf");
+}
+
+@font-face {
+  font-family: EuclidRegular;
+  src: url("./assets/fonts/EuclidRegular.ttf");
+}
+
+@font-face {
+  font-family: EuclidSemiBold;
+  src: url("./assets/fonts/EuclidSemiBold.ttf");
+}
+
+@font-face {
+  font-family: Almarena;
+  src: url("./assets/fonts/Almarena.otf") format("opentype");
+}
+
+@font-face {
+  font-family: AlmarenaBold;
+  src: url("./assets/fonts/AlmarenaBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: AlmarenaDisplayBold;
+  src: url("./assets/fonts/AlmarenaDisplayBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: AlmarenaDisplayLight;
+  src: url("./assets/fonts/AlmarenaDisplayLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: AlmarenaDisplayRegular;
+  src: url("./assets/fonts/AlmarenaDisplayRegular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: AlmarenaLight;
+  src: url("./assets/fonts/AlmarenaDisplayLight.otf") format("opentype");
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
