@@ -1,13 +1,5 @@
-[build]
-  publish = "build"
-  functions = './functions/'
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  from = "/*"
+  to = "/index.html"
   status = 200
-[[plugins]]
-  package = "@netlify/plugin-functions-install-core"
-[[redirects]]
-from = "/static/*"
-to = "/static/:splat"
-status = 200
+  force = false
