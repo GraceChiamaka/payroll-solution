@@ -1,5 +1,5 @@
 import Layout from "../../components/Layouts";
-import { PageWrapper, Heading, DataRow, Title, Text } from "./style";
+import { PageWrapper, Heading, DataRow, Title, Text, InfoCard } from "./style";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import payrollData from "../../utils/data.json";
@@ -51,59 +51,72 @@ const Staff = () => {
     console.log(staffData["Employee Name"]);
     return (
       <div>
-        <Heading> {staffData["Employee Name"]} 😎</Heading>
-        <DataRow>
-          <Title> Employee ID </Title>
-          <Text>{staffData["Employee ID"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Payroll Period </Title>
-          <Text>{staffData["Payroll Period"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Pay Date </Title>
-          <Text>{staffData["Pay Date"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Departments </Title>
-          <Text>{staffData["Departments"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> currency</Title>
-          <Text>{staffData["currency"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Hours Worked </Title>
-          <Text>{staffData["Hours Worked"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Base Salary </Title>
-          <Text>{staffData["Base Salary"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Bonus </Title>
-          <Text>{staffData["Bonus"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Student Loan Repayment </Title>
-          <Text>{staffData["Student Loan Repayment"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Income Tax </Title>
-          <Text>{staffData["Income Tax"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Employee Pension </Title>
-          <Text>{staffData["Employee Pension"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Net Pay </Title>
-          <Text>{staffData["Net Pay"]}</Text>
-        </DataRow>
-        <DataRow>
-          <Title> Employer Pension </Title>
-          <Text>{staffData["Employer Pension"]}</Text>
-        </DataRow>
+        <Heading>
+          {staffData["Employee Name"]} 😎
+          <DataRow>
+            <Title> Employee ID </Title>
+            <Text>{staffData["Employee ID"]}</Text>
+          </DataRow>
+        </Heading>
+        <InfoCard>
+          <h3>Employee Details</h3>
+          <DataRow>
+            <Title> Payroll Period </Title>
+            <Text>{staffData["Payroll Period"]}</Text>
+          </DataRow>
+          <DataRow>
+            <Title> Pay Date </Title>
+            <Text>{staffData["Pay Date"]}</Text>
+          </DataRow>
+          <DataRow>
+            <Title> Departments </Title>
+            <Text>{staffData["Departments"]}</Text>
+          </DataRow>
+          <DataRow>
+            <Title> Hours Worked </Title>
+            <Text>{staffData["Hours Worked"]}</Text>
+          </DataRow>
+        </InfoCard>
+        <InfoCard>
+          <h3>Payment Information</h3>
+          <DataRow>
+            <Title> currency</Title>
+            <Text>{staffData["currency"]}</Text>
+          </DataRow>
+          <DataRow>
+            <Title> Base Salary </Title>
+            <Text>{staffData["Base Salary"]}</Text>
+          </DataRow>
+          <DataRow>
+            <Title> Bonus </Title>
+            <Text>{staffData["Bonus"]}</Text>
+          </DataRow>
+          <DataRow>
+            <Title> Student Loan Repayment </Title>
+            <Text>{staffData["Student Loan Repayment"]}</Text>
+          </DataRow>
+          <DataRow>
+            <Title> Net Pay </Title>
+            <Text>{staffData["Net Pay"]}</Text>
+          </DataRow>
+        </InfoCard>
+
+        <InfoCard>
+          <h3>Deductibles</h3>
+          <DataRow>
+            <Title> Income Tax </Title>
+            <Text>{staffData["Income Tax"]}</Text>
+          </DataRow>
+          <DataRow>
+            <Title> Employee Pension </Title>
+            <Text>{staffData["Employee Pension"]}</Text>
+          </DataRow>
+
+          <DataRow>
+            <Title> Employer Pension </Title>
+            <Text>{staffData["Employer Pension"]}</Text>
+          </DataRow>
+        </InfoCard>
       </div>
     );
   };

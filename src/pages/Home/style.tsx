@@ -29,12 +29,21 @@ export const TableRow = styled.div`
 
 export const Col2 = styled.div`
   width: 23%;
+  ${theme.media.sm(575)} {
+    width: 100%;
+  }
 `;
 export const Col7 = styled.div`
   width: 60%;
+  ${theme.media.sm(575)} {
+    width: 100%;
+  }
 `;
 export const ColX = styled.div`
   width: 35%;
+  ${theme.media.sm(575)} {
+    width: 100%;
+  }
 `;
 export const Col6 = styled.div`
   width: 50%;
@@ -57,6 +66,12 @@ export const Card = styled.div`
   p {
     font-size: ${theme.fontSize.cardHeading};
     font-family: ${theme.fontFamily.euclidRegular};
+  }
+  ${theme.media.sm(575)} {
+    margin-bottom: ${theme.spacing.custom(16)};
+    h3 {
+      font-size: ${theme.fontSize.small};
+    }
   }
 `;
 
@@ -109,7 +124,8 @@ export const Bonus = styled.div`
 export const Table = styled.div`
   margin-top: ${theme.spacing.custom(30)};
   border-radius: ${theme.borderRadius.primary};
-
+  width: 100%;
+  overflow-x: scroll;
   table {
     width: 100%;
     thead {
@@ -138,8 +154,19 @@ export const Table = styled.div`
           a {
             text-decoration: none;
             color: ${theme.colors.primary[300]};
+            font-family: ${theme.fontFamily.euclidMedium};
           }
         }
+      }
+    }
+  }
+  ${theme.media.sm(575)} {
+    table {
+      td {
+        white-space: pre;
+      }
+      th {
+        white-space: pre;
       }
     }
   }
@@ -154,6 +181,13 @@ export const ChartCard = styled.div`
   canvas {
     height: 430px !important;
     width: 80% !important;
+  }
+  ${theme.media.sm(575)} {
+    margin-bottom: ${theme.spacing.custom(32)};
+    canvas {
+      height: 400px !important;
+      width: 100% !important;
+    }
   }
 `;
 export const DataCardHeading = styled.div`

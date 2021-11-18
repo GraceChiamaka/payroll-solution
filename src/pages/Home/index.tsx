@@ -119,19 +119,19 @@ const HomePage = () => {
         <Col2>
           <Card>
             <h3>Total Payroll</h3>
-            <p>${totalPayroll}</p>
+            <p>£{totalPayroll}</p>
           </Card>
         </Col2>
         <Col2>
           <Card>
             <h3>Total Bonus </h3>
-            <p>${totalBonus}</p>
+            <p>£{totalBonus}</p>
           </Card>
         </Col2>
         <Col2>
           <Card>
             <h3>Total Pension</h3>
-            <p>${totalPension}</p>
+            <p>£{totalPension}</p>
           </Card>
         </Col2>
         <Col2>
@@ -182,7 +182,7 @@ const HomePage = () => {
               {payrollData.map((item) => (
                 <Bonus>
                   <h4>{item["Employee Name"]}</h4>
-                  <p>${item["Bonus"]}</p>
+                  <p>£{item["Bonus"]}</p>
                 </Bonus>
               ))}
             </BonusCard>
@@ -191,7 +191,7 @@ const HomePage = () => {
               {payrollData.map((item) => (
                 <Bonus>
                   <h4>{item["Employee Name"]}</h4>
-                  <p>{item["Hours Worked"]} hrs</p>
+                  <p>{item["Hours Worked"]} h</p>
                 </Bonus>
               ))}
             </BonusCard>

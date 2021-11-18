@@ -3,6 +3,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "EuclidRegular";
+  width: 100%;
 }
 @font-face {
   font-family: EuclidBold;
