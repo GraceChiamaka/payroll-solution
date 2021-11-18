@@ -1,15 +1,21 @@
 import Layout from "../../components/Layouts";
 import {
   Heading,
-  Row,
-  Col,
   Card,
-  ColX,
-  TableContainer,
+  Table,
   ChartCard,
-  Col6,
+  BonusCard,
+  Row,
+  ColX,
+  Col2,
+  Col7,
+  Col12,
+  TableRow,
+  DataCardHeading,
+  Bonus,
+  ChartContainer,
 } from "./style";
-import payrollData from "./data.json";
+import payrollData from "../../utils/data.json";
 import { useState, useEffect, useRef } from "react";
 
 import { Link } from "react-router-dom";
@@ -21,8 +27,8 @@ const HomePage = () => {
   const [totalPension, setTotalPension] = useState(0);
   const [totalPayroll, setTotalPayroll] = useState(0);
   const [chartData, setChartData] = useState<number[]>([]);
+  const [employeeCount, setEmployeeCount] = useState(0);
 
-  let pension = 0;
   const data = {
     labels: [
       "Base Salary",
@@ -59,27 +65,30 @@ const HomePage = () => {
   let ref = useRef();
 
   useEffect(() => {
-    getPaidBonues();
-    getPaidPension();
-    getTotalPayroll();
-    getChartData();
+    getInitialData();
+
+    // eslint-disable-next-line
   }, []);
 
-  const getPaidBonues = () => {
-    let total = 0;
-    payrollData.forEach((item) => (total += item["Bonus"]));
-    setTotalBonus(total);
+  const getInitialData = () => {
+    getPaidBonues();
+    getChartData();
   };
-  const getPaidPension = () => {
-    let total = 0;
-    payrollData.forEach((item) => (total += item["Employee Pension"]));
-    setTotalPension(total);
-  };
-  const getTotalPayroll = () => {
-    let paidTotal = 0;
 
-    payrollData.forEach((item) => (paidTotal += item["Net Pay"]));
-    setTotalPayroll(paidTotal);
+  const getPaidBonues = () => {
+    let totalNetPay = 0;
+    let totalPaidPension = 0;
+    let totalPaidBonus = 0;
+
+    payrollData.forEach((item) => {
+      totalNetPay += item["Net Pay"];
+      totalPaidPension += item["Employee Pension"];
+      totalPaidBonus += item["Bonus"];
+    });
+    setEmployeeCount(payrollData.length);
+    setTotalBonus(totalPaidBonus);
+    setTotalPension(totalPaidPension);
+    setTotalPayroll(totalNetPay);
   };
 
   const getChartData = () => {
@@ -106,91 +115,131 @@ const HomePage = () => {
       <Heading>
         <h3>Welcome,</h3>
       </Heading>
-      <Row>
-        <ColX>
+      <Row justify="space-between">
+        <Col2>
           <Card>
             <h3>Total Payroll</h3>
             <p>${totalPayroll}</p>
           </Card>
-        </ColX>
-        <Col>
+        </Col2>
+        <Col2>
           <Card>
             <h3>Total Bonus </h3>
             <p>${totalBonus}</p>
           </Card>
-        </Col>
-        <Col>
+        </Col2>
+        <Col2>
           <Card>
             <h3>Total Pension</h3>
             <p>${totalPension}</p>
           </Card>
-        </Col>
+        </Col2>
+        <Col2>
+          <Card>
+            <h3>Total Employes</h3>
+            <p>{employeeCount}</p>
+          </Card>
+        </Col2>
       </Row>
 
-      <ChartCard>
-        <Row>
-          <Col6>
-            <Doughnut
-              ref={ref}
-              data={data}
-              height="300"
-              width="100"
-              options={{
-                plugins: {
-                  title: {
-                    display: true,
-                    text: "Payroll Summary ($)",
-                  },
-                  legend: {
-                    display: true,
-                    position: "bottom",
-                    labels: {
-                      font: {
-                        size: 14,
-                        family: theme.fontFamily.euclidRegular,
+      <ChartContainer>
+        <Row justify="space-between">
+          <Col7>
+            <ChartCard>
+              <DataCardHeading>
+                <h3>Payroll Summary</h3>
+              </DataCardHeading>
+
+              <Doughnut
+                ref={ref}
+                data={data}
+                height="300"
+                width="100"
+                options={{
+                  plugins: {
+                    title: {
+                      display: true,
+                    },
+                    legend: {
+                      display: true,
+                      position: "bottom",
+                      labels: {
+                        font: {
+                          size: 14,
+                          family: theme.fontFamily.euclidRegular,
+                        },
+                        color: theme.colors.black[100],
                       },
-                      color: theme.colors.black[100],
                     },
                   },
-                },
-              }}
-            />
-          </Col6>
-        </Row>
-      </ChartCard>
-
-      <Row>
-        <TableContainer>
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Departments</th>
-                <th>Hours Worked</th>
-                <th>Pay Date</th>
-                <th>Currency</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
+                }}
+              />
+            </ChartCard>
+          </Col7>
+          <ColX>
+            <BonusCard>
+              <h3>Employee Bonus</h3>
               {payrollData.map((item) => (
-                <tr>
-                  <td>{item["Employee ID"]}</td>
-                  <td>{item["Employee Name"]}</td>
-                  <td>{item["Departments"]}</td>
-                  <td>{item["Hours Worked"]}</td>
-                  <td>{item["Pay Date"]}</td>
-                  <td>{item["currency"]}</td>
-                  <td>
-                    <Link to={`/staff/${item["Employee ID"]}`}>View</Link>
-                  </td>
-                </tr>
+                <Bonus>
+                  <h4>{item["Employee Name"]}</h4>
+                  <p>${item["Bonus"]}</p>
+                </Bonus>
               ))}
-            </tbody>
-          </table>
-        </TableContainer>
-      </Row>
+            </BonusCard>
+            <BonusCard>
+              <h3>Working Hours </h3>
+              {payrollData.map((item) => (
+                <Bonus>
+                  <h4>{item["Employee Name"]}</h4>
+                  <p>{item["Hours Worked"]} hrs</p>
+                </Bonus>
+              ))}
+            </BonusCard>
+          </ColX>
+        </Row>
+      </ChartContainer>
+
+      <TableRow>
+        <Col12>
+          <ChartCard>
+            <DataCardHeading>
+              <h3>Employee Summary</h3>
+            </DataCardHeading>
+            <Table>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Departments</th>
+                    <th>Hours Worked</th>
+                    <th>Pay Date</th>
+                    <th>Currency</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {payrollData.map((item) => (
+                    <tr>
+                      <td>{item["Employee ID"]}</td>
+                      <td>{item["Employee Name"]}</td>
+                      <td>{item["Departments"]}</td>
+                      <td>{item["Hours Worked"]}</td>
+                      <td>{item["Pay Date"]}</td>
+                      <td>{item["currency"]}</td>
+                      <td>
+                        <Link to={`/staff/${item["Employee ID"]}`}>
+                          View Details
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Table>
+          </ChartCard>
+        </Col12>
+      </TableRow>
     </Layout>
   );
 };

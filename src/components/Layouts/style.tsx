@@ -26,56 +26,72 @@ export const PageContentContainer = styled.div`
 `;
 
 export const Logo = styled.div`
-  padding: ${theme.spacing.double(24, 0)};
+  padding: ${theme.spacing.double(24, 48)};
   h3 {
-    color: ${theme.colors.primary[300]};
-    font-family: ${theme.fontFamily.almarenaDisplayBold};
-    text-align: center;
-    font-size: ${theme.fontSize.custom(2)};
+    color: ${theme.colors.primary[200]};
+    font-family: ${theme.fontFamily.euclidSemiBold};
+
+    font-size: ${theme.fontSize.custom(1.7)};
     margin: 0;
   }
 `;
 export const NavContainer = styled.ul`
   padding-inline-start: 0;
-`;
-
-export const SideNav = styled.li<{ active: boolean }>`
+  margin: 0;
+  margin-top: 2rem;
   list-style: none;
-  width: 300px;
+  width: 100%;
   a {
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    overflow-x: none;
-    width: 100%;
-    padding: ${theme.spacing.double(12, 24)};
-    background: ${({ active }) =>
-      active ? theme.colors.primary[200] : theme.colors.white};
+    display: block;
+    position: relative;
+  }
+  a.active {
+    li {
+      svg {
+        path {
+          fill: ${theme.colors.primary[200]};
+        }
+      }
+      span {
+        color: ${theme.colors.primary[200]};
+      }
+    }
+    &::after {
+      content: "";
+      height: 100%;
+      border-right: ${theme.border.custom("3px", theme.colors.primary[200])};
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+`;
+
+export const SideNav = styled.li`
+  display: flex;
+  align-items: center;
+
+  padding: ${theme.spacing.double(12, 24)};
+  background: ${theme.colors.white};
+  position: relative;
+  span {
+    display: inline-block;
+    color: ${theme.colors.black[300]};
+    font-size: ${theme.fontSize.custom(1.2)};
+    font-family: ${theme.fontFamily.euclidRegular};
+    margin-left: ${theme.spacing.custom(5)};
+    color: ${theme.colors.black[300]};
+  }
+
+  &:hover {
+    background: ${theme.colors.primary[100]};
     span {
-      display: inline-block;
       color: ${theme.colors.black[300]};
-      font-size: ${theme.fontSize.custom(1.2)};
-      font-family: ${theme.fontFamily.euclidRegular};
-      margin-left: ${theme.spacing.custom(5)};
-      color: ${({ active }) =>
-        active ? theme.colors.white : theme.colors.black[300]};
     }
     svg {
       path {
-        fill: ${({ active }) =>
-          active ? theme.colors.white : theme.colors.black[300]};
-      }
-    }
-
-    &:hover {
-      background: ${theme.colors.primary[200]};
-      span {
-        color: ${theme.colors.white};
-      }
-      svg {
-        path {
-          fill: ${theme.colors.white};
-        }
+        fill: ${theme.colors.black[300]};
       }
     }
   }

@@ -1,14 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from "../pages/Home";
 import Staff from "../pages/Staff";
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/staff/:id" element={<Staff />} />
-      </Routes>
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/staff/:id" exact component={Staff} />
+      </Switch>
     </BrowserRouter>
   );
 };

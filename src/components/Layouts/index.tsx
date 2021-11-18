@@ -8,7 +8,7 @@ import {
   SideNav,
 } from "./style";
 import Navbar from "../General/Navbar";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, useRouteMatch } from "react-router-dom";
 import { ReactComponent as UsersIcon } from "../../assets/images/svg/user.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/images/svg/dashboard.svg";
 import { ReactComponent as SettingsIcon } from "../../assets/images/svg/settings.svg";
@@ -37,7 +37,24 @@ const navList = [
   },
 ];
 const Layout = ({ children }: any) => {
-  const { pathname } = window.location;
+  const newmatch = useRouteMatch();
+
+  const isActivePath = (pathName: string, url: string) => {
+    if (pathName && pathName !== "" && pathName !== "/") {
+      if (
+        pathName &&
+        url &&
+        url !== "" &&
+        url !== "/" &&
+        pathName.includes(url)
+      ) {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  };
+
   return (
     <LayoutContainer>
       <Sidebar>
@@ -46,12 +63,19 @@ const Layout = ({ children }: any) => {
         </Logo>
         <NavContainer>
           {navList.map(({ url, name, Icon }) => (
-            <SideNav active={pathname === url}>
-              <Link to={`${url}`}>
+            <NavLink
+              exact
+              to={`${url}`}
+              key={`/${url}`}
+              isActive={() =>
+                url === newmatch.url || isActivePath(newmatch.url, url)
+              }
+            >
+              <SideNav>
                 <Icon />
                 <span>{name}</span>
-              </Link>
-            </SideNav>
+              </SideNav>
+            </NavLink>
           ))}
         </NavContainer>
       </Sidebar>

@@ -7,6 +7,7 @@ const colors = {
     100: "#f2f3f6",
     200: "#6469A8",
     300: "#1c228f",
+    400: "#55596a",
   },
   black: {
     300: "#222833",
@@ -78,19 +79,13 @@ const doubleSpacing = (verVal: number, horVal: number) =>
 
 const fontSize = {
   custom: customFontSize,
-  small: customFontSize(0.6),
-  /**
-   * normal font size
-   */
+  small: customFontSize(0.8),
   normal: customFontSize(1),
-  /**
-   * font size for headers
-   */
-  heading: customFontSize(1.5),
+  heading: customFontSize(1.2),
 
   hero: customFontSize(2.5),
 
-  navlink: customFontSize(0.4),
+  cardHeading: customFontSize(1.8),
 };
 
 /**
@@ -107,16 +102,10 @@ const fontFamily = {
   euclidRegular: "EuclidRegular,sans-serif",
   euclidSemiBold: "EuclidSemiBold, sans-serif",
   euclidSemiBoldItalic: "EuclidSemiBoldItalic, sans-serif ",
-  almarena: "Almarena, sans-serif",
-  almarenaBold: "AlmarenaBold, sans-serif",
-  almarenaDisplayBold: "AlmarenaDisplayBold, sans-serif",
-  almarenaDisplayLight: "AlmarenaDisplayLight, sans-serif",
-  almarenaDisplayRegular: "AlmarenaDisplayRegular, sans-serif",
-  almarenaLight: "AlmarenaLight, sans-serif",
 };
 const spacing = {
-  normal: customSpacing(5),
-  medium: customSpacing(10),
+  normal: customSpacing(16),
+  small: customSpacing(10),
   large: customSpacing(25),
   double: doubleSpacing,
   custom: customSpacing,
@@ -132,7 +121,7 @@ const borderRadius = {
 const border = {
   custom: customBorder,
   input: "1px solid #2d2d2d",
-  subMenu: "1px solid #000000",
+  table: "1px solid #f2f3f6",
   card: "2px solid #000000",
 };
 
