@@ -15,6 +15,7 @@ import {
   Bonus,
   ChartContainer,
 } from "./style";
+import { formatCurrency } from "utils/currencyFormatter";
 import payrollData from "../../utils/data.json";
 import { useState, useEffect, useRef } from "react";
 
@@ -76,19 +77,19 @@ const HomePage = () => {
   };
 
   const getPaidBonues = () => {
-    let totalNetPay = 0;
+    let totalGross = 0;
     let totalPaidPension = 0;
     let totalPaidBonus = 0;
 
     payrollData.forEach((item) => {
-      totalNetPay += item["Net Pay"];
+      totalGross += item["Net Pay"] + item["Bonus"];
       totalPaidPension += item["Employee Pension"];
       totalPaidBonus += item["Bonus"];
     });
     setEmployeeCount(payrollData.length);
     setTotalBonus(totalPaidBonus);
     setTotalPension(totalPaidPension);
-    setTotalPayroll(totalNetPay);
+    setTotalPayroll(totalGross);
   };
 
   const getChartData = () => {
@@ -118,20 +119,20 @@ const HomePage = () => {
       <Row justify="space-between">
         <Col2>
           <Card>
-            <h3>Total Payroll</h3>
-            <p>£{totalPayroll}</p>
+            <h3>Gross Total</h3>
+            <p>{formatCurrency(totalPayroll)}</p>
           </Card>
         </Col2>
         <Col2>
           <Card>
             <h3>Total Bonus </h3>
-            <p>£{totalBonus}</p>
+            <p>{formatCurrency(totalBonus)}</p>
           </Card>
         </Col2>
         <Col2>
           <Card>
             <h3>Total Pension</h3>
-            <p>£{totalPension}</p>
+            <p>{formatCurrency(totalPension)}</p>
           </Card>
         </Col2>
         <Col2>
@@ -184,7 +185,7 @@ const HomePage = () => {
                 .map((item) => (
                   <Bonus>
                     <h4>{item["Employee Name"]}</h4>
-                    <p>£{item["Bonus"]}</p>
+                    <p>{formatCurrency(item["Bonus"])}</p>
                   </Bonus>
                 ))}
             </BonusCard>
@@ -229,8 +230,10 @@ const HomePage = () => {
                       <td>{item["Employee ID"]}</td>
                       <td>{item["Employee Name"]}</td>
                       <td>{item["Departments"]}</td>
-                      <td>{item["Net Pay"]}</td>
-                      <td> {item["Base Salary"] + item["Bonus"]}</td>
+                      <td>{formatCurrency(item["Net Pay"])}</td>
+                      <td>
+                        {formatCurrency(item["Base Salary"] + item["Bonus"])}
+                      </td>
                       <td>{item["currency"]}</td>
                       <td>
                         <Link to={`/staff/${item["Employee ID"]}`}>

@@ -45,8 +45,6 @@ const Staff = () => {
     // eslint-disable-next-line
   }, []);
 
-  console.log(staffData);
-
   const getUserData = () => {
     const userData: StaffProps[] = payrollData.filter(
       (data: StaffProps) => data["Employee ID"] === staffId
@@ -56,13 +54,11 @@ const Staff = () => {
     }
   };
 
-  console.log(formatCurrency(23));
-
   const displayData = () => {
     if (staffData === null) {
       return <p>Loading...</p>;
     }
-    console.log(staffData["Employee Name"]);
+
     return (
       <div>
         <Heading>
