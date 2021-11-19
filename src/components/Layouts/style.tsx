@@ -14,7 +14,7 @@ export const PageContainer = styled.div`
   position: absolute;
   right: 0;
   min-height: 100vh;
-  ${theme.media.sm(575)} {
+  ${theme.media.lg} {
     width: calc(100% - 80px);
   }
 `;

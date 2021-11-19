@@ -7,7 +7,7 @@ export const Sidebar = styled.div`
   position: fixed;
   height: 100vh;
   overflow-x: hidden;
-  ${theme.media.sm(575)} {
+  ${theme.media.lg} {
     width: ${theme.spacing.custom(80)};
   }
 `;
@@ -21,18 +21,18 @@ export const Logo = styled.div`
     font-size: ${theme.fontSize.custom(1.7)};
     margin: 0;
   }
-  ${theme.media.sm(575)} {
+  ${theme.media.lg} {
     padding: ${theme.spacing.double(24, 12)};
   }
 `;
 export const LogoXl = styled.div`
-  ${theme.media.sm(575)} {
+  ${theme.media.lg} {
     display: none;
   }
 `;
 export const LogoSM = styled.div`
   display: none;
-  ${theme.media.sm(575)} {
+  ${theme.media.lg} {
     display: block;
   }
 `;
@@ -96,7 +96,7 @@ export const SideNav = styled.li`
       }
     }
   }
-  ${theme.media.sm(575)} {
+  ${theme.media.lg} {
     span {
       display: none;
     }

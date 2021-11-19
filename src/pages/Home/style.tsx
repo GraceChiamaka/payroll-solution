@@ -29,18 +29,27 @@ export const TableRow = styled.div`
 
 export const Col2 = styled.div`
   width: 23%;
+  ${theme.media.lg} {
+    width: 49%;
+  }
   ${theme.media.sm(575)} {
     width: 100%;
   }
 `;
 export const Col7 = styled.div`
   width: 60%;
+  ${theme.media.lg} {
+    width: 100%;
+  }
   ${theme.media.sm(575)} {
     width: 100%;
   }
 `;
 export const ColX = styled.div`
   width: 35%;
+  ${theme.media.lg} {
+    width: 100%;
+  }
   ${theme.media.sm(575)} {
     width: 100%;
   }
@@ -67,7 +76,7 @@ export const Card = styled.div`
     font-size: ${theme.fontSize.cardHeading};
     font-family: ${theme.fontFamily.euclidRegular};
   }
-  ${theme.media.sm(575)} {
+  ${theme.media.lg} {
     margin-bottom: ${theme.spacing.custom(16)};
     h3 {
       font-size: ${theme.fontSize.small};
@@ -160,7 +169,7 @@ export const Table = styled.div`
       }
     }
   }
-  ${theme.media.sm(575)} {
+  ${theme.media.lg} {
     table {
       td {
         white-space: pre;
@@ -182,7 +191,7 @@ export const ChartCard = styled.div`
     height: 430px !important;
     width: 80% !important;
   }
-  ${theme.media.sm(575)} {
+  ${theme.media.lg} {
     margin-bottom: ${theme.spacing.custom(32)};
     canvas {
       height: 400px !important;

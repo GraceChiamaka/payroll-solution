@@ -4,6 +4,11 @@ import theme from "theme";
 export const PageWrapper = styled.div`
   padding: ${theme.spacing.double(0, 100)};
   width: 70%;
+
+  ${theme.media.lg} {
+    width: 80%;
+    padding: ${theme.spacing.double(0, 30)};
+  }
   ${theme.media.sm(575)} {
     padding: ${theme.spacing.double(0, 0)};
     width: 100%;
@@ -30,6 +35,10 @@ export const Title = styled.p`
   font-family: ${theme.fontFamily.euclidRegular};
   font-size: ${theme.fontSize.normal};
 
+  ${theme.media.lg} {
+    width: 50%;
+  }
+
   ${theme.media.sm(575)} {
     width: 100%;
   }
@@ -39,6 +48,10 @@ export const Text = styled.p`
   color: ${theme.colors.primary[400]};
   font-family: ${theme.fontFamily.euclidRegular};
   font-size: ${theme.fontSize.normal};
+
+  ${theme.media.lg} {
+    width: 50%;
+  }
   ${theme.media.sm(575)} {
     width: 100%;
   }
@@ -68,6 +81,10 @@ export const DeductText = styled.p`
   color: ${theme.colors.secondary[200]};
   font-family: ${theme.fontFamily.euclidMedium};
   font-size: ${theme.fontSize.normal};
+
+  ${theme.media.lg} {
+    width: 50%;
+  }
   ${theme.media.sm(575)} {
     width: 100%;
   }
@@ -77,6 +94,9 @@ export const DeductTitle = styled.p`
   color: ${theme.colors.secondary[200]};
   font-family: ${theme.fontFamily.euclidMedium};
   font-size: ${theme.fontSize.normal};
+  ${theme.media.lg} {
+    width: 50%;
+  }
   ${theme.media.sm(575)} {
     width: 100%;
   }
@@ -88,6 +108,9 @@ export const TotalTitle = styled.h4`
   font-family: ${theme.fontFamily.euclidSemiBold};
   font-size: ${theme.fontSize.normal};
 
+  ${theme.media.lg} {
+    width: 50%;
+  }
   ${theme.media.sm(575)} {
     width: 100%;
   }
@@ -97,6 +120,9 @@ export const TotalText = styled.p`
   color: ${theme.colors.primary[400]};
   font-family: ${theme.fontFamily.euclidSemiBold};
   font-size: ${theme.fontSize.normal};
+  ${theme.media.lg} {
+    width: 50%;
+  }
   ${theme.media.sm(575)} {
     width: 100%;
   }
