@@ -16,7 +16,7 @@ import {
   ChartContainer,
 } from "./style";
 import { formatCurrency } from "utils/currencyFormatter";
-import payrollData from "../../utils/data.json";
+import payrollData from "../../data/payroll-data.json";
 import { useState, useEffect, useRef } from "react";
 
 import { Link } from "react-router-dom";

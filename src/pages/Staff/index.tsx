@@ -14,7 +14,7 @@ import {
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { formatCurrency } from "../../utils/currencyFormatter";
-import payrollData from "../../utils/data.json";
+import payrollData from "../../data/payroll-data.json";
 
 interface StaffProps {
   "Employee ID": string;
