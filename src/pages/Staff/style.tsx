@@ -38,7 +38,7 @@ export const Text = styled.p`
   width: 40%;
   color: ${theme.colors.primary[400]};
   font-family: ${theme.fontFamily.euclidRegular};
-  font-size: ${theme.fontSize.small};
+  font-size: ${theme.fontSize.normal};
   ${theme.media.sm(575)} {
     width: 100%;
   }
@@ -60,5 +60,44 @@ export const InfoCard = styled.div`
     font-size: ${theme.fontSize.normal};
     margin: 0;
     margin-bottom: ${theme.spacing.custom(24)};
+  }
+`;
+
+export const DeductText = styled.p`
+  width: 40%;
+  color: ${theme.colors.secondary[200]};
+  font-family: ${theme.fontFamily.euclidMedium};
+  font-size: ${theme.fontSize.normal};
+  ${theme.media.sm(575)} {
+    width: 100%;
+  }
+`;
+export const DeductTitle = styled.p`
+  width: 30%;
+  color: ${theme.colors.secondary[200]};
+  font-family: ${theme.fontFamily.euclidMedium};
+  font-size: ${theme.fontSize.normal};
+  ${theme.media.sm(575)} {
+    width: 100%;
+  }
+`;
+
+export const TotalTitle = styled.h4`
+  width: 30%;
+  color: ${theme.colors.primary[400]};
+  font-family: ${theme.fontFamily.euclidSemiBold};
+  font-size: ${theme.fontSize.normal};
+
+  ${theme.media.sm(575)} {
+    width: 100%;
+  }
+`;
+export const TotalText = styled.p`
+  width: 40%;
+  color: ${theme.colors.primary[400]};
+  font-family: ${theme.fontFamily.euclidSemiBold};
+  font-size: ${theme.fontSize.normal};
+  ${theme.media.sm(575)} {
+    width: 100%;
   }
 `;

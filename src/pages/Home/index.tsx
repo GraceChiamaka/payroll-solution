@@ -179,21 +179,25 @@ const HomePage = () => {
           <ColX>
             <BonusCard>
               <h3>Employee Bonus</h3>
-              {payrollData.map((item) => (
-                <Bonus>
-                  <h4>{item["Employee Name"]}</h4>
-                  <p>£{item["Bonus"]}</p>
-                </Bonus>
-              ))}
+              {payrollData
+                .sort((a, b) => b["Bonus"] - a["Bonus"])
+                .map((item) => (
+                  <Bonus>
+                    <h4>{item["Employee Name"]}</h4>
+                    <p>£{item["Bonus"]}</p>
+                  </Bonus>
+                ))}
             </BonusCard>
             <BonusCard>
               <h3>Working Hours </h3>
-              {payrollData.map((item) => (
-                <Bonus>
-                  <h4>{item["Employee Name"]}</h4>
-                  <p>{item["Hours Worked"]} h</p>
-                </Bonus>
-              ))}
+              {payrollData
+                .sort((a, b) => b["Hours Worked"] - a["Hours Worked"])
+                .map((item) => (
+                  <Bonus>
+                    <h4>{item["Employee Name"]}</h4>
+                    <p>{item["Hours Worked"]} h</p>
+                  </Bonus>
+                ))}
             </BonusCard>
           </ColX>
         </Row>
@@ -204,6 +208,7 @@ const HomePage = () => {
           <ChartCard>
             <DataCardHeading>
               <h3>Employee Summary</h3>
+              <p>{payrollData[0]["Pay Date"]}</p>
             </DataCardHeading>
             <Table>
               <table>
@@ -212,8 +217,8 @@ const HomePage = () => {
                     <th>ID</th>
                     <th>Name</th>
                     <th>Departments</th>
-                    <th>Hours Worked</th>
-                    <th>Pay Date</th>
+                    <th>Net Pay</th>
+                    <th>Gross Pay</th>
                     <th>Currency</th>
                     <th>Action</th>
                   </tr>
@@ -224,8 +229,8 @@ const HomePage = () => {
                       <td>{item["Employee ID"]}</td>
                       <td>{item["Employee Name"]}</td>
                       <td>{item["Departments"]}</td>
-                      <td>{item["Hours Worked"]}</td>
-                      <td>{item["Pay Date"]}</td>
+                      <td>{item["Net Pay"]}</td>
+                      <td> {item["Base Salary"] + item["Bonus"]}</td>
                       <td>{item["currency"]}</td>
                       <td>
                         <Link to={`/staff/${item["Employee ID"]}`}>

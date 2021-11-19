@@ -1,7 +1,19 @@
 import Layout from "../../components/Layouts";
-import { PageWrapper, Heading, DataRow, Title, Text, InfoCard } from "./style";
+import {
+  PageWrapper,
+  Heading,
+  DataRow,
+  Title,
+  Text,
+  InfoCard,
+  DeductText,
+  TotalText,
+  DeductTitle,
+  TotalTitle,
+} from "./style";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { formatCurrency } from "../../utils/currencyFormatter";
 import payrollData from "../../utils/data.json";
 
 interface StaffProps {
@@ -44,6 +56,8 @@ const Staff = () => {
     }
   };
 
+  console.log(formatCurrency(23));
+
   const displayData = () => {
     if (staffData === null) {
       return <p>Loading...</p>;
@@ -57,64 +71,53 @@ const Staff = () => {
             <Title> Employee ID </Title>
             <Text>{staffData["Employee ID"]}</Text>
           </DataRow>
-        </Heading>
-        <InfoCard>
-          <h3>Employee Details</h3>
           <DataRow>
             <Title> Payroll Period </Title>
             <Text>{staffData["Payroll Period"]}</Text>
           </DataRow>
           <DataRow>
-            <Title> Pay Date </Title>
-            <Text>{staffData["Pay Date"]}</Text>
-          </DataRow>
-          <DataRow>
             <Title> Departments </Title>
             <Text>{staffData["Departments"]}</Text>
           </DataRow>
-          <DataRow>
-            <Title> Hours Worked </Title>
-            <Text>{staffData["Hours Worked"]}</Text>
-          </DataRow>
-        </InfoCard>
+        </Heading>
+
         <InfoCard>
-          <h3>Payment Information</h3>
+          <h3>Payroll Information</h3>
           <DataRow>
-            <Title> currency</Title>
+            <Title> Currency</Title>
             <Text>{staffData["currency"]}</Text>
           </DataRow>
           <DataRow>
             <Title> Base Salary </Title>
-            <Text>{staffData["Base Salary"]}</Text>
+            <Text>{formatCurrency(staffData["Base Salary"])}</Text>
           </DataRow>
           <DataRow>
             <Title> Bonus </Title>
-            <Text>{staffData["Bonus"]}</Text>
+            <Text>{formatCurrency(staffData["Bonus"])}</Text>
+          </DataRow>{" "}
+          <DataRow>
+            <TotalTitle> Gross Salary </TotalTitle>
+            <TotalText>
+              {formatCurrency(
+                staffData["Base Salary"] +
+                  staffData["Bonus"] +
+                  staffData["Student Loan Repayment"]
+              )}
+            </TotalText>
           </DataRow>
           <DataRow>
-            <Title> Student Loan Repayment </Title>
-            <Text>{staffData["Student Loan Repayment"]}</Text>
+            <DeductTitle> Employees Pension</DeductTitle>
+            <DeductText>
+              {formatCurrency(staffData["Employee Pension"])}
+            </DeductText>
           </DataRow>
           <DataRow>
-            <Title> Net Pay </Title>
-            <Text>{staffData["Net Pay"]}</Text>
-          </DataRow>
-        </InfoCard>
-
-        <InfoCard>
-          <h3>Deductibles</h3>
-          <DataRow>
-            <Title> Income Tax </Title>
-            <Text>{staffData["Income Tax"]}</Text>
+            <DeductTitle> Income Tax</DeductTitle>
+            <DeductText>{formatCurrency(staffData["Income Tax"])}</DeductText>
           </DataRow>
           <DataRow>
-            <Title> Employee Pension </Title>
-            <Text>{staffData["Employee Pension"]}</Text>
-          </DataRow>
-
-          <DataRow>
-            <Title> Employer Pension </Title>
-            <Text>{staffData["Employer Pension"]}</Text>
+            <TotalTitle> Net Pay </TotalTitle>
+            <TotalText>{formatCurrency(staffData["Net Pay"])}</TotalText>
           </DataRow>
         </InfoCard>
       </div>

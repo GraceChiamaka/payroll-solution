@@ -192,7 +192,7 @@ export const ChartCard = styled.div`
 `;
 export const DataCardHeading = styled.div`
   display: flex;
-  justicy-content: space-between;
+  justify-content: space-between;
   h3 {
     font-size: ${theme.fontSize.heading};
     margin: 0;

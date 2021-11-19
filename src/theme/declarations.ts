@@ -14,8 +14,8 @@ const colors = {
     200: "#000000",
     100: "#0F0F19",
   },
-  tertiary: {},
   secondary: {
+    200: "#df0505",
     100: "rgba(100, 105, 168, 0.5)",
   },
   white: "#ffffff",

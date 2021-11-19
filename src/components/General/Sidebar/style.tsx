@@ -31,6 +31,7 @@ export const LogoXl = styled.div`
   }
 `;
 export const LogoSM = styled.div`
+  display: none;
   ${theme.media.sm(575)} {
     display: block;
   }
